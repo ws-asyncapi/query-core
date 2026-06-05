@@ -37,6 +37,7 @@ export interface QueryCoreClient {
         get(): Map<string, unknown>;
         readonly self: string | null;
         set(state: unknown): Promise<void>;
+        update(patch: unknown): void;
         clear(): Promise<void>;
         subscribe(cb: (members: Map<string, unknown>) => void): () => void;
     };
@@ -178,6 +179,7 @@ export function presenceStore(
     client: QueryCoreClient,
 ): Subscribable<PresenceSnapshotState> & {
     set: (state: unknown) => Promise<void>;
+    update: (patch: unknown) => void;
     clear: () => Promise<void>;
 } {
     let snapshot: PresenceSnapshotState = {
@@ -204,6 +206,7 @@ export function presenceStore(
         },
         getSnapshot: () => snapshot,
         set: (state) => client.presence.set(state),
+        update: (patch) => client.presence.update(patch),
         clear: () => client.presence.clear(),
     };
 }
