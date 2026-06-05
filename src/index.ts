@@ -328,6 +328,18 @@ export function connectionStore(
                     ),
                 );
             }
+            // refresh to current liveness for a late subscriber (the socket may
+            // already be open), then notify so the snapshot is up to date
+            const live = {
+                connected: client.connected,
+                recovered: client.recovered,
+            };
+            if (
+                live.connected !== snapshot.connected ||
+                live.recovered !== snapshot.recovered
+            )
+                snapshot = live;
+            onChange();
             return () => {
                 listeners.delete(onChange);
                 if (listeners.size === 0) {
