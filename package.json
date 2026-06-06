@@ -1,0 +1,37 @@
+{
+    "name": "@ws-asyncapi/query-core",
+    "version": "0.1.0",
+    "description": "Framework-agnostic TanStack Query bridge for ws-asyncapi — query/mutation options + subscribable presence/stream/event stores. Base for the react/solid/vue/svelte bindings.",
+    "license": "MIT",
+    "type": "module",
+    "author": {
+        "url": "https://github.com/kravetsone",
+        "name": "kravets"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ws-asyncapi/query-core.git"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "files": ["dist"],
+    "scripts": {
+        "prepublishOnly": "bunx pkgroll"
+    },
+    "peerDependencies": {
+        "@tanstack/query-core": "^5.0.0",
+        "@ws-asyncapi/client": "^0.1.0",
+        "ws-asyncapi": "^0.1.0"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
+        "@tanstack/query-core": "^5.101.0",
+        "@types/bun": "latest",
+        "pkgroll": "^2.11.2"
+    }
+}
