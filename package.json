@@ -19,7 +19,9 @@
             "require": "./dist/index.cjs"
         }
     },
-    "files": ["dist"],
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "prepublishOnly": "bunx pkgroll"
     },
@@ -32,6 +34,7 @@
         "@biomejs/biome": "^1.9.4",
         "@tanstack/query-core": "^5.101.0",
         "@types/bun": "latest",
-        "pkgroll": "^2.11.2"
+        "pkgroll": "^2.11.2",
+        "typescript": "^5.8.2"
     }
 }
